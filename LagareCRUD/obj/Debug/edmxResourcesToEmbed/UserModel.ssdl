@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="user_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="birthYear" Type="int" Nullable="false" />
+    <Property Name="birthMonth" Type="int" Nullable="false" />
+    <Property Name="birthday" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'user_db.dbo.vw_ViewAllUserColumns' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_ViewAllUserColumns">
+    <Key>
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="firstName" />
+      <PropertyRef Name="lastName" />
+      <PropertyRef Name="birthYear" />
+      <PropertyRef Name="birthMonth" />
+      <PropertyRef Name="birthday" />
+      <PropertyRef Name="username" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="birthYear" Type="int" Nullable="false" />
+    <Property Name="birthMonth" Type="int" Nullable="false" />
+    <Property Name="birthday" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Function Name="sp_InsertDataIntoUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirstName" Type="varchar" Mode="In" />
+    <Parameter Name="LastName" Type="varchar" Mode="In" />
+    <Parameter Name="BirthYear" Type="int" Mode="In" />
+    <Parameter Name="BirthMonth" Type="int" Mode="In" />
+    <Parameter Name="BirthDay" Type="int" Mode="In" />
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="user_dbModelStoreContainer">
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_ViewAllUserColumns" EntityType="Self.vw_ViewAllUserColumns" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_ViewAllUserColumns].[userId] AS [userId], 
+    [vw_ViewAllUserColumns].[firstName] AS [firstName], 
+    [vw_ViewAllUserColumns].[lastName] AS [lastName], 
+    [vw_ViewAllUserColumns].[birthYear] AS [birthYear], 
+    [vw_ViewAllUserColumns].[birthMonth] AS [birthMonth], 
+    [vw_ViewAllUserColumns].[birthday] AS [birthday], 
+    [vw_ViewAllUserColumns].[username] AS [username], 
+    [vw_ViewAllUserColumns].[password] AS [password]
+    FROM [dbo].[vw_ViewAllUserColumns] AS [vw_ViewAllUserColumns]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="user_dbModelStoreContainer" CdmEntityContainer="user_dbEntities">
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="user_dbModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="birthYear" ColumnName="birthYear" />
+          <ScalarProperty Name="birthMonth" ColumnName="birthMonth" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_ViewAllUserColumns">
+      <EntityTypeMapping TypeName="user_dbModel.vw_ViewAllUserColumns">
+        <MappingFragment StoreEntitySet="vw_ViewAllUserColumns">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="birthYear" ColumnName="birthYear" />
+          <ScalarProperty Name="birthMonth" ColumnName="birthMonth" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_InsertDataIntoUsers" FunctionName="user_dbModel.Store.sp_InsertDataIntoUsers" />
+  </EntityContainerMapping>
+</Mapping>

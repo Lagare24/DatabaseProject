@@ -1,0 +1,78 @@
+﻿@model user
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <label for="firstname">First Name: </label>
+    @*<input type="text" class="form-control" id="firstname" name="firstname"/>*@
+    @Html.TextBoxFor(model => model.firstName, new { @class = "form-control", id = "firstName", name = "firstName" });
+
+    <label for="lastname">Last Name: </label>
+    @*<input type="text" class="form-control" id="lastname" name="lastname"/>*@
+    @Html.TextBoxFor(model => model.lastName, new { @class = "form-control", id = "lastName", name = "lastName" });
+
+
+    <label for="birthmonth">Birthdate: </label>
+    <div class="row">
+        <div class="col-lg-2">
+            @*<select placeholder="Month" class="form-control" id="birthmonth" name="birthmonth">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>*@
+            @Html.DropDownListFor(model => model.birthMonth, new SelectList(new[]
+            {
+                new { Value = 1, Text = "January" },
+                new { Value = 2, Text = "February" },
+                new { Value = 3, Text = "March" },
+                new { Value = 4, Text = "April" },
+                new { Value = 5, Text = "May" },
+                new { Value = 6, Text = "June" },
+                new { Value = 7, Text = "July" },
+                new { Value = 8, Text = "August" },
+                new { Value = 9, Text = "September" },
+                new { Value = 10, Text = "October" },
+                new { Value = 11, Text = "November" },
+                new { Value = 12, Text = "December" }
+            },
+            "Value",
+            "Text"
+        ), "Month", new { @class = "form-control", id = "birthMonth", name = "birthMonth" })
+        </div>
+        <div class="col-lg-1">
+            @*<input min="0" max="31" placeholder="Day" type="number" class="form-control" id="birthday" name="birthday" />*@
+            @Html.TextBoxFor(model => model.birthday, new { @class = "form-control", id = "birthday", name = "birthday", type = "number", min = "0", max = "31", placeholder = "Day" })
+        </div>
+        <div class="col-lg-2">
+            @*<input min="1900" max="2024" placeholder="Year" type="number" class="form-control" id="birthyear" name="birthyear" />*@
+            @Html.TextBoxFor(model => model.birthYear, new { @class = "form-control", id = "birthYear", name = "birthYear", type = "number", min = "1900", max = "2024", placeholder = "Year" })
+        </div>
+    </div>
+
+    <label for="username">Username: </label>
+    @*<input type="text" class="form-control" id="username" name="username"/>*@
+    @Html.TextBoxFor(model => model.username, new { @class = "form-control", id = "username", name= "username" })
+
+    <label for="password">Password: </label>
+    @*<input type="password" class="form-control" id="password" name="password"/>*@
+    @Html.PasswordFor(model => model.password, new { @class = "form-control", id = "password", name = "password" })
+    <br />
+
+    <input type="submit" class="btn btn-success" value="Add user"/>
+}
+
